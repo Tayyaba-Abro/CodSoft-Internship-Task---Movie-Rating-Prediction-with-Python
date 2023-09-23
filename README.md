@@ -6,10 +6,16 @@ Movie Rating Prediciton project involves building a model that predicts the rati
 ## Goal
 The main goal of this project is to analyze historical movie data and develop a model that accurately estimates the rating given to a movie by users or critics. By doing so, we aim to provide insights into the factors that influence movie ratings and create a model that can estimate the ratings of movies accurately.
 
+## Quick Link
+Dataset: [Movie Rating Prediction Dataset](https://www.kaggle.com/datasets/adrianmcmahon/imdb-india-movies)
+
+## Technologies Used
+- Python
+- Jupyter Notebook
+- Libraries: pandas, numpy, scikit-learn, seaborn, and matplotlib
 ## Project Steps
 
 ### Importing Libraries
-
 ```python
 # import necessary libraries required
 
@@ -97,5 +103,137 @@ dummies = df['Genre'].str.get_dummies(', ')
 # creating a new dataframe which combines df and dummies
 df_genre = pd.concat([df, dummies], axis=1)
 ```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/ff5be8d9-4a1d-4ba2-a3fb-a8ce75b33eeb)
+
+#### iii. Number of Movies in each Genre
+```python
+genre_columns = df_genre.columns[10:]  # Assuming genre columns start from the 11th column
+genre_columns
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/bfca044b-f95c-4344-b59a-7195c7048043)
+```python
+# group the data by genre_columns and count the number of movies in each genre
+genre_movie_counts = df_genre[genre_columns].sum().sort_index()
+
+# create a bar chart
+plt.figure(figsize=(18, 9))
+plt.bar(genre_movie_counts.index, genre_movie_counts.values, color='skyblue')
+plt.xlabel('Genre')
+plt.ylabel('Number of Movies')
+plt.title('Number of Movies Released Per Genre')
+
+plt.xticks(rotation=90)  # Rotate the x-axis labels for better readability
+
+plt.show()
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/2c85b850-3a5c-41ed-aa38-cd5b235628a4)
+
+#### iv. Movie Duration vs. Rating Scatter Plot
+```python
+plt.figure(figsize=(20, 8))
+# create a scatter plot with Duration and Rating relationship
+sns.scatterplot(x=df['Duration'], y=df['Rating'])
+plt.xlabel('Duration of Movie (mins)')
+plt.ylabel('Movie Rating')
+plt.title('Movie Duration vs Rating')
+plt.show()
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/7e3c049a-936e-40c9-892e-f044ce6c3f39)
+
+### Feature Engineering
+```python
+# dropping the columns from the dataframe since these are the least dependable observations for target variable 'Rating'
+df.drop(['Name','Director','Actor 1','Actor 2','Actor 3'], axis=1,inplace=True)
+# show first five records of the dataframe
+df.head()
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/7e5a2962-1db6-49e6-8bac-139df715f303)
+
+```python
+# creating target variable and learning observations for the model
+X = df[['Year','Duration','Votes']]
+y = df['Rating']
+
+# split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=231)
+```
+
+### Model Building
+
+#### Linear Regression Model:
+```python
+# creating a liner regression model
+lr = LinearRegression()
+
+# training the data on linear regression model
+lr.fit(X_train, y_train)
+
+# predicting the test data on trained model
+pred = lr.predict(X_test)
+
+# evaluating linear regression model
+r2_score(y_test,pred)
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/5debc250-5bd3-4ee2-9312-55692a90592c)
+
+#### K-Nearest Neighbors (KNN) Regression Model
+```python
+# creating a range for number of neighbors parameter of the KNN model
+kRange = range(1,40,1)
+
+# creating an empty scores list
+scores_list = []
+
+# iterate every value in kRange list 
+for i in kRange:
+    # create a K Nearest Neighbor model with i as number of neighbors
+    regressor_knn = KNeighborsRegressor(n_neighbors = i)
+    
+    # fit training data to the KNN model
+    regressor_knn.fit(X_train,y_train)
+    # evaluate the model
+    pred = regressor_knn.predict(X_test)
+    
+    # append the regression score for evaluation of the model to scores_list
+    scores_list.append(r2_score(y_test,pred))
+```
+
+```python
+plt.figure(figsize=(12,8))
+# create a line graph for showing regression score (scores_list) for respective number of neighbors used in the KNN model
+plt.plot(kRange, scores_list, linewidth=2, color='green')
+# values for x-axis should be the number of neighbors stored in kRange
+plt.xticks(kRange)
+plt.xlabel('Neighbor Number')
+plt.ylabel('r2_Score of KNN')
+plt.show() 
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/833215bc-6375-4d0d-a411-3950516e2de8)
+
+```python 
+# Creating a KNN model with best parameters i.e., number of neighbors = 23
+regressor_knn = KNeighborsRegressor(n_neighbors = 23)
+
+# fit training data to the KNN model
+regressor_knn.fit(X_train,y_train)
+# evaluate test data on the model
+pred = regressor_knn.predict(X_test)
+# show regression score
+r2_score(y_test,pred)
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/6e40f640-6e68-41cb-9dc4-eb7cd090cdb0)
+
+## Conclusion
+This project enables us to explore data analysis, data preprocessing, feature engineering, and machine learning modeling techniques. It provides valuable insights into the factors influencing movie ratings and equips us with a model to predict movie ratings accurately.
+
+
 
 
