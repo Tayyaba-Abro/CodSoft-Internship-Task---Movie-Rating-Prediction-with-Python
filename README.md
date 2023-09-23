@@ -13,12 +13,12 @@ Dataset: [Movie Rating Prediction Dataset](https://www.kaggle.com/datasets/adria
 - Python
 - Jupyter Notebook
 - Libraries: pandas, numpy, scikit-learn, seaborn, and matplotlib
+  
 ## Project Steps
 
 ### Importing Libraries
 ```python
 # import necessary libraries required
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -36,6 +36,7 @@ df = pd.read_csv("movies.csv", encoding='latin1')
 # show first five records of dataframe
 df.head()
 ```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/e6694a77-4b7d-450b-bc41-98d4c33f0c08)
 
 ### Data Wrangling
 ```python
@@ -81,20 +82,30 @@ df['Year'] = df['Year'].str.strip('()').astype(int)
 # remove minutes from the Duration column values
 df['Duration'] = df['Duration'].str.replace(r' min', '').astype(int)
 ```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/dcd77be1-9228-4f6e-903c-781e49db55fb)
 
+```python
 # remove commas from Votes column and convert to integer
+df['Votes'] = df['Votes'].str.replace(',', '').astype(int)
 
 # show the number of records and observations after cleaning the dataframe
 df.shape
+```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/0bccb3c7-c02a-4ec7-83e0-53dc169baa9e)
 
+```python
 # show the info on the cleaned dataframe
 df.info()
+```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/e60eb157-1db1-43c4-9b4a-d0cbad91369e)
 
+```python
 # show the statistics of the dataframe
 df.describe()
 ```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/59b1d3f0-bd21-4ec5-a035-daed3d7791b4)
 
-###Exploratory Data Analysis
+### Exploratory Data Analysis
 
 #### i. Number of Movies each Year
 ```python
