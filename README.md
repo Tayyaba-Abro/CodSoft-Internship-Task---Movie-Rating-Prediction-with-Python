@@ -1,7 +1,7 @@
 # CodSoft Internship Task - Movie Rating Prediction with Python
 
 ## Introduction
-This project involves building a model that predicts the rating of a movie based on features like genre, director, and actors. We use regression techniques to tackle this exciting problem.
+Movie Rating Prediciton project involves building a model that predicts the rating of a movie based on features like genre, director, and actors. We use regression techniques to tackle this exciting problem. This enables us to explore data analysis, preprocessing, feature engineering, and machine learning modeling techniques
 
 ## Goal
 The main goal of this project is to analyze historical movie data and develop a model that accurately estimates the rating given to a movie by users or critics. By doing so, we aim to provide insights into the factors that influence movie ratings and create a model that can estimate the ratings of movies accurately.
@@ -68,4 +68,34 @@ df.info()
 # show the statistics of the dataframe
 df.describe()
 ```
+
+###Exploratory Data Analysis
+
+#### i. Number of Movies each Year
+```python
+# group the data by Year and count the number of movies in each year
+yearly_movie_counts = df['Year'].value_counts().sort_index()
+
+# create a bar chart
+plt.figure(figsize=(18, 9))
+plt.bar(yearly_movie_counts.index, yearly_movie_counts.values, color='skyblue')
+plt.xlabel('Year')
+plt.ylabel('Number of Movies')
+plt.title('Number of Movies Released Each Year')
+
+# Show every second year on the x-axis and rotate x-labels for better readability
+plt.xticks(yearly_movie_counts.index[::2], rotation=90)
+
+plt.show()
+```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/e7f325a7-3bca-41c9-a586-210c512741f5)
+
+#### ii. Creating Genre Dummy Columns
+```python
+# create dummy columns for each genre
+dummies = df['Genre'].str.get_dummies(', ')
+# creating a new dataframe which combines df and dummies
+df_genre = pd.concat([df, dummies], axis=1)
+```
+
 
