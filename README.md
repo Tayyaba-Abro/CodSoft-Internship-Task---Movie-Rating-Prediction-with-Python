@@ -38,7 +38,7 @@ df.head()
 ```
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/e6694a77-4b7d-450b-bc41-98d4c33f0c08)
 
-### Data Wrangling
+### Data Preprocessing
 ```python
 # show the number of records and observations in the dataframe
 df.shape
@@ -105,7 +105,7 @@ df.describe()
 ```
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/59b1d3f0-bd21-4ec5-a035-daed3d7791b4)
 
-### Exploratory Data Analysis
+### Exploratory Data Analysis (EDA)
 
 #### i. Number of Movies each Year
 ```python
