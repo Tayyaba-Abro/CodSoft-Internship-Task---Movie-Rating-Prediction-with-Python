@@ -195,7 +195,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 ### Model Building
 
-#### Linear Regression Model:
+#### i. Linear Regression Model:
 ```python
 # creating a liner regression model
 lr = LinearRegression()
@@ -212,7 +212,7 @@ r2_score(y_test,pred)
 
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/5debc250-5bd3-4ee2-9312-55692a90592c)
 
-#### K-Nearest Neighbors (KNN) Regression Model
+#### ii. K-Nearest Neighbors (KNN) Regression Model
 ```python
 # creating a range for number of neighbors parameter of the KNN model
 kRange = range(1,40,1)
