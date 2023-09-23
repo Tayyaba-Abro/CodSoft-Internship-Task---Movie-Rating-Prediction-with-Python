@@ -41,27 +41,46 @@ df.head()
 ```python
 # show the number of records and observations in the dataframe
 df.shape
+```
+![shape](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/1ff0299c-3bc2-48e5-ba4c-28f3b7984b6a)
 
+```python
 # check out the information on the dataframe
 df.info()
+```
+![df info](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/cb9ec138-e0ba-4d89-a3a2-fac9a61ecc6f)
 
+```python
 # check out the missing values in each observation
 df.isna().sum()
+```
+![null sum](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/f7b67286-f674-45b5-afd3-ab9de0ee15bc)
 
+```python
 # drop records with missing value in any of the following columns: Name, Year, Duration, Votes, Rating
 df.dropna(subset=['Name', 'Year', 'Duration', 'Votes', 'Rating'], inplace=True)
 
 # check the missing values in each observation again
 df.isna().sum()
+```
+![drop na values](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/d94dae87-123b-46f5-bd45-ad9677cdca44)
 
+```python
 # remove rows with duplicate movie records
 df.drop_duplicates(subset=['Name', 'Year', 'Director'], keep='first', inplace=True)
+```
+![duplicates](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/d620b0be-77f8-4f15-87df-4956659608cf)
 
+```python
 # remove () from the Year column values and change the datatype to integer
 df['Year'] = df['Year'].str.strip('()').astype(int)
+```
+![year](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/8a4d4334-a9e5-43da-ba2d-53ddeb5e30bb)
 
+```python
 # remove minutes from the Duration column values
 df['Duration'] = df['Duration'].str.replace(r' min', '').astype(int)
+```
 
 # remove commas from Votes column and convert to integer
 
