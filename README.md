@@ -1,7 +1,7 @@
 # CodSoft Internship Task - Movie Rating Prediction with Python
 
 ## Introduction
-Movie Rating Prediciton project involves building a model that predicts the rating of a movie based on features like genre, director, and actors. We use regression techniques to tackle this exciting problem. This enables us to explore data analysis, preprocessing, feature engineering, and machine learning modeling techniques
+Movie Rating Prediction project involves building a model that predicts the rating of a movie based on features like genre, director, and actors. We use regression techniques to tackle this exciting problem. This enables us to explore data analysis, preprocessing, feature engineering, and machine learning modeling techniques
 
 ## Goal
 The main goal of this project is to analyze historical movie data and develop a model that accurately estimates the rating given to a movie by users or critics. By doing so, we aim to provide insights into the factors that influence movie ratings and create a model that can estimate the ratings of movies accurately.
@@ -16,7 +16,7 @@ Dataset: [Movie Rating Prediction Dataset](https://www.kaggle.com/datasets/adria
   
 ## Project Steps
 
-### Importing Libraries
+### 1. Importing Libraries
 ```python
 # import necessary libraries required
 import pandas as pd
@@ -29,7 +29,7 @@ from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 ```
 
-### Reading Data
+### 2. Reading Data
 ```python
 # read the dataset into a dataframe
 df = pd.read_csv("movies.csv", encoding='latin1')
@@ -38,7 +38,7 @@ df.head()
 ```
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/e6694a77-4b7d-450b-bc41-98d4c33f0c08)
 
-### Data Preprocessing
+### 3. Data Preprocessing
 ```python
 # show the number of records and observations in the dataframe
 df.shape
@@ -105,7 +105,7 @@ df.describe()
 ```
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/59b1d3f0-bd21-4ec5-a035-daed3d7791b4)
 
-### Exploratory Data Analysis (EDA)
+### 4. Exploratory Data Analysis (EDA)
 
 #### i. Number of Movies each Year
 ```python
@@ -174,7 +174,7 @@ plt.show()
 
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/7e3c049a-936e-40c9-892e-f044ce6c3f39)
 
-### Feature Engineering
+### 5. Feature Engineering
 ```python
 # dropping the columns from the dataframe since these are the least dependable observations for target variable 'Rating'
 df.drop(['Name','Director','Actor 1','Actor 2','Actor 3'], axis=1,inplace=True)
@@ -193,7 +193,7 @@ y = df['Rating']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=231)
 ```
 
-### Machine Learning Modeling Techniques
+### 6. Machine Learning Modeling Techniques
 
 #### i. Linear Regression Model
 ```python
@@ -262,7 +262,7 @@ r2_score(y_test,pred)
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/6e40f640-6e68-41cb-9dc4-eb7cd090cdb0)
 
 ## Conclusion
-This project enables us to explore data analysis, data preprocessing, feature engineering, and machine learning modeling techniques. It provides valuable insights into the factors influencing movie ratings and equips us with a model to predict movie ratings accurately.
+In conclusion, this project allowed us to explore various data analysis, data preprocessing, feature engineering, and machine learning modeling techniques. It provided valuable insights into the factors influencing movie ratings and equipped us with a model for accurate movie rating predictions.
 
 
 
