@@ -122,12 +122,14 @@ plt.title('Number of Movies Released Each Year')
 # Show every second year on the x-axis and rotate x-labels for better readability
 plt.xticks(yearly_movie_counts.index[::2], rotation=90)
 
+for bar in bars:
+    xval = bar.get_x() + bar.get_width() / 2
+    yval = bar.get_height()
+    plt.text(xval, yval, int(yval), ha='center', va='bottom', rotation= 90)
+
 plt.show()
 ```
-![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/e7f325a7-3bca-41c9-a586-210c512741f5)
-
-![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/ddacc77a-6c8c-429d-bef3-842bb454d0fb)
-
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/06e9d637-468b-4eb4-b94e-ed2de65c5b2d)
 
 #### ii. Creating Genre Dummy Columns and Analyzing Movie Counts by Genre
 ```python
@@ -156,16 +158,65 @@ plt.xlabel('Genre')
 plt.ylabel('Number of Movies')
 plt.title('Number of Movies Released Per Genre')
 
-plt.xticks(rotation=90)  # Rotate the x-axis labels for better readability
+plt.xticks(rotation=90)  
+
+for bar in bars:
+    xval = bar.get_x() + bar.get_width() / 2
+    yval = bar.get_height()
+    plt.text(xval, yval, int(yval), ha='center', va='bottom')
+
+plt.show()
+```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/7dde9e14-dc5d-4d30-a50b-d43c1e64e008)
+
+#### iii. Top 20 Directors with the Most Movies
+```python
+# Analyzing count of movies of each director
+director_movie_counts = df['Director'].value_counts()
+
+# Create a bar chart
+plt.figure(figsize=(10, 5))
+bars = director_movie_counts.head(20).plot(kind='bar', color='maroon')
+plt.xlabel('Director')
+plt.ylabel('Number of Movies')
+plt.title('Top 20 Directors with the Most Movies')
+plt.xticks(rotation=90) 
+
+# Add count labels on top of the bars
+for bar in bars.patches:
+    xval = bar.get_x() + bar.get_width() / 2
+    yval = bar.get_height()
+    plt.text(xval, yval, int(yval), ha='center', va='bottom')
 
 plt.show()
 ```
 
-![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/2c85b850-3a5c-41ed-aa38-cd5b235628a4)
+![director count](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/86517817-b813-42f6-b18b-97af6f2d19b5)
 
-#### iii. Movie Duration vs. Rating Scatter Plot
+#### iv. Top 20 Actors with the most Movies
 
-#### iv. Movie Duration vs. Rating Scatter Plot
+```python
+# To Count Top 20 movies for each actor
+actor_movie_counts = df['Actor 1'].value_counts()
+
+# Create a bar chart
+plt.figure(figsize=(10, 5))
+actor_movie_counts.head(20).plot(kind='bar', color='maroon')
+plt.xlabel('Actors')
+plt.ylabel('Number of Movies')
+plt.title('Top 20 Actors with the Most Movies')
+plt.xticks(rotation=90) 
+
+# Add count labels on top of the bars
+for i, v in enumerate(actor_movie_counts.head(20)):
+    plt.text(i, v, str(v), ha='center', va='bottom')
+
+plt.show()
+```
+
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/c22865c7-9456-48d2-b7a5-96e4ecd59e6c)
+
+#### v. Movie Duration vs. Rating Scatter Plot
 ```python
 plt.figure(figsize=(20, 8))
 # create a scatter plot with Duration and Rating relationship
@@ -175,8 +226,7 @@ plt.ylabel('Movie Rating')
 plt.title('Movie Duration vs Rating')
 plt.show()
 ```
-
-![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/7e3c049a-936e-40c9-892e-f044ce6c3f39)
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/21e4732e-700a-4cdd-800b-8d8b621b44e4)
 
 ### 5. Feature Engineering
 ```python
