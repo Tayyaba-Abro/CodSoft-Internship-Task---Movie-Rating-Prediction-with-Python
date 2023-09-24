@@ -126,7 +126,10 @@ plt.show()
 ```
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/e7f325a7-3bca-41c9-a586-210c512741f5)
 
-#### ii. Creating Genre Dummy Columns
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/ddacc77a-6c8c-429d-bef3-842bb454d0fb)
+
+
+#### ii. Creating Genre Dummy Columns and Analyzing Movie Counts by Genre
 ```python
 # create dummy columns for each genre
 dummies = df['Genre'].str.get_dummies(', ')
@@ -136,7 +139,6 @@ df_genre = pd.concat([df, dummies], axis=1)
 
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/ff5be8d9-4a1d-4ba2-a3fb-a8ce75b33eeb)
 
-#### iii. Number of Movies in each Genre
 ```python
 genre_columns = df_genre.columns[10:]  # Assuming genre columns start from the 11th column
 genre_columns
@@ -160,6 +162,8 @@ plt.show()
 ```
 
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/2c85b850-3a5c-41ed-aa38-cd5b235628a4)
+
+#### iii. Movie Duration vs. Rating Scatter Plot
 
 #### iv. Movie Duration vs. Rating Scatter Plot
 ```python
