@@ -114,7 +114,7 @@ yearly_movie_counts = df['Year'].value_counts().sort_index()
 
 # create a bar chart
 plt.figure(figsize=(18, 9))
-plt.bar(yearly_movie_counts.index, yearly_movie_counts.values, color='skyblue')
+plt.bar(yearly_movie_counts.index, yearly_movie_counts.values, color='darkred')
 plt.xlabel('Year')
 plt.ylabel('Number of Movies')
 plt.title('Number of Movies Released Each Year')
@@ -153,7 +153,7 @@ genre_movie_counts = df_genre[genre_columns].sum().sort_index()
 
 # create a bar chart
 plt.figure(figsize=(18, 9))
-plt.bar(genre_movie_counts.index, genre_movie_counts.values, color='skyblue')
+plt.bar(genre_movie_counts.index, genre_movie_counts.values, color='darkred')
 plt.xlabel('Genre')
 plt.ylabel('Number of Movies')
 plt.title('Number of Movies Released Per Genre')
@@ -220,7 +220,7 @@ plt.show()
 ```python
 plt.figure(figsize=(20, 8))
 # create a scatter plot with Duration and Rating relationship
-sns.scatterplot(x=df['Duration'], y=df['Rating'])
+sns.scatterplot(x=df['Duration'], y=df['Rating'],  color = 'maroon')
 plt.xlabel('Duration of Movie (mins)')
 plt.ylabel('Movie Rating')
 plt.title('Movie Duration vs Rating')
