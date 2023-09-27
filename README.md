@@ -315,6 +315,52 @@ r2_score(y_test,pred)
 
 ![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/6e40f640-6e68-41cb-9dc4-eb7cd090cdb0)
 
+#### iii. SGD Regression
+
+```python
+from sklearn.linear_model import SGDRegressor
+from sklearn.metrics import r2_score
+
+# Create an instance of the SGDRegressor
+sgd_regressor = SGDRegressor(max_iter=100, random_state=1)  # You can adjust the max_iter and random_state
+
+# Fit the model to your training data
+sgd_regressor.fit(X_train, y_train)
+
+# Make predictions
+pred = sgd_regressor.predict(X_test)
+
+# Evaluate the model
+r2 = r2_score(y_test, pred)
+
+print("R-squared score:", r2)
+```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/68688281-9693-4b69-99b6-97a3c02a4d27)
+
+#### iv. Random Forest Regression
+```python
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import r2_score
+
+rf_regressor = RandomForestRegressor(n_estimators=100, random_state=1)
+rf_regressor.fit(X_train, y_train)
+rf_pred = rf_regressor.predict(X_test)
+r2_rf = r2_score(y_test, rf_pred)
+print(f'R-squared score (Random Forest): {r2_rf}')
+```
+![random forest](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/138512da-a7cc-4815-be15-1c50eaf72b8d)
+
+#### v. Gradient Boosting Regression
+```python
+from sklearn.ensemble import GradientBoostingRegressor
+gb_regressor = GradientBoostingRegressor(n_estimators=100, random_state=231)
+gb_regressor.fit(X_train, y_train)
+gb_pred = gb_regressor.predict(X_test)
+r2_gb = r2_score(y_test, gb_pred)
+print(f'R-squared score: {r2_gb}')
+```
+![image](https://github.com/Tayyaba-Abro/CodSoft-Internship-Task---Movie-Rating-Prediction-with-Python/assets/47588244/89bab72a-ad5d-419c-b5af-a125c2870050)
+
 ## Conclusion
 In conclusion, this project allowed us to explore various data analysis, data preprocessing, feature engineering, and machine learning modeling techniques. It provided valuable insights into the factors influencing movie ratings and equipped us with a model for accurate movie rating predictions.
 
